@@ -1,0 +1,216 @@
+main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/btnF1"
+        android:layout_width="178dp"
+        android:layout_height="50dp"
+        android:text="@string/fragment_1"
+        tools:ignore="MissingConstraints,TextContrastCheck,TextContrastCheck,DuplicateClickableBoundsCheck"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="52dp" />
+
+    <Button
+        android:id="@+id/btnF2"
+        android:layout_width="178dp"
+        android:layout_height="50dp"
+        android:text="@string/fragment_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:name="com.example.exp7.FirstFragment"
+        android:layout_width="417dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_below="@+id/btnF1"
+        tools:ignore="MissingConstraints"
+        tools:layout="@layout/fragment_first"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="208dp" />
+</LinearLayout>
+
+Main.java
+
+package com.example.exp7;
+
+import android.os.Build;
+import android.os.Bundle;
+
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+    Button btnF1, btnF2;
+
+    @Override
+// get the reference of Button's
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            final android.support.v4.app.Fragment first = new FirstFragment();
+            final android.support.v4.app.Fragment second = new SecondFragment();
+            findViewById(R.id.btnF1).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+                    android.support.v4.app.FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                    fragmentTransaction.replace(R.id.frameLayout, first);
+                    fragmentTransaction.commit();
+                }
+            });
+            findViewById(R.id.btnF2).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                    fragmentTransaction.replace(R.id.frameLayout, second);
+                    fragmentTransaction.commit();
+                }
+            });
+        }
+}
+
+First.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.exp7.FirstFragment">
+
+    <TextView
+        android:id="@+id/tvF1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is First Fragment"
+        android:textSize="40sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="349dp" />
+
+    <Button
+        android:id="@+id/firstButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#673AB7"
+        android:text="First Fragment"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="288dp" />
+
+</android.support.constraint.ConstraintLayout>
+
+first.java
+
+package com.example.exp7;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class FirstFragment extends Fragment {
+
+
+    View tvF1;
+    Button firstButton;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+// Inflate the layout for this fragment
+        tvF1 = inflater.inflate(R.layout.fragment_first, container, false);
+
+        firstButton = (Button) tvF1.findViewById(R.id.firstButton);
+// perform setOnClickListener on first Button
+        firstButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+// display a message by using a Toast
+                Toast.makeText(getActivity(), "First Fragment", Toast.LENGTH_LONG).show();
+            }
+        });
+        return tvF1;
+    }
+}
+
+second.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.exp7.SecondFragment">
+
+    <Button
+        android:id="@+id/secondButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#03A9F4"
+        android:text="Second Fragment"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="291dp" />
+
+</android.support.constraint.ConstraintLayout>
+
+second.java
+
+package com.example.exp7;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class SecondFragment extends Fragment {
+    View tvF2;
+    Button secondButton;
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+// Inflate the layout for this fragment
+            tvF2 = inflater.inflate(R.layout.fragment_second, container, false);
+
+            secondButton = (Button) tvF2.findViewById(R.id.secondButton);
+// perform setOnClickListener on first Button
+            secondButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+// display a message by using a Toast
+                    Toast.makeText(getActivity(), "Second Fragment", Toast.LENGTH_LONG).show();
+                }
+            });
+
+            return tvF2;
+        }
+    }
