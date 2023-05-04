@@ -1,5 +1,5 @@
 Main_Activity.java
-
+----------------------------------------------------
 import android.app.*;
 import android.os.*;
 import android.text.method.ScrollingMovementMethod;
@@ -31,6 +31,8 @@ public class MainActivity extends Activity {
 }
 
 XML
+-----------------------------------------
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
