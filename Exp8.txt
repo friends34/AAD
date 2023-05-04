@@ -1,0 +1,91 @@
+activity.xml:;
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.example.exp_8.MainActivity">
+    <RadioGroup
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:id="@+id/radioGroup">
+        <RadioButton
+        android:id="@+id/radio_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Male"
+        android:onClick="checkButton"
+        android:checked="true"/>
+        <RadioButton
+        android:id="@+id/radio_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Female"
+        android:onClick="checkButton"/>
+        <RadioButton
+        android:id="@+id/radio_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Others"
+        android:onClick="checkButton"/>
+    </RadioGroup>
+    <TextView
+    android:id="@+id/text_view_selected"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/radioGroup"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="27dp"
+    android:text="Your selection: "
+    android:textSize="20sp" />
+    <Button
+    android:id="@+id/button_apply"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/text_view_selected"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="37dp"
+    android:text="apply" />
+</RelativeLayout>
+
+MainActivity.java
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
+    RadioGroup radioGroup;
+    RadioButton radioButton;
+    TextView textView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        radioGroup = findViewById(R.id.radioGroup);
+        textView = findViewById(R.id.text_view_selected);
+        Button buttonApply = findViewById(R.id.button_apply);
+        buttonApply.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+        int radioId = radioGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(radioId);
+        textView.setText("Your choice: " + radioButton.getText());
+        }
+        });
+    }
+    public void checkButton(View v) {
+        int radioId = radioGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(radioId);
+        Toast.makeText(this, "Selected Radio Button: " +
+        radioButton.getText(),
+        Toast.LENGTH_SHORT).show();
+    }
+}
