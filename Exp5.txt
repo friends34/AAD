@@ -1,150 +1,135 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2709
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww29200\viewh18400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+MainActivity.java
+mport androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
-\f0\b\fs28 \cf0 MainActivity.java\
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
-\f1\b0\fs24 mport androidx.appcompat.app.ActionBar;\
-import androidx.appcompat.app.AppCompatActivity;\
-\
-import android.content.DialogInterface;\
-import android.content.Intent;\
-import android.os.Bundle;\
-import android.view.Menu;\
-import android.view.View;\
-import android.widget.Button;\
-import android.widget.EditText;\
-\
-public class MainActivity extends AppCompatActivity \{\
-\
-    @Override\
-    protected void onCreate(Bundle savedInstanceState) \{\
-        super.onCreate(savedInstanceState);\
-        setContentView(R.layout.activity_main);\
-\
-        ActionBar actionBar = getSupportActionBar();\
-        actionBar.setTitle("First Activity");\
-\
-        EditText mNameEt =  findViewById(R.id.nameEt);\
-        EditText mEmailEt = findViewById(R.id.emailEt);\
-        EditText mPhoneEt = findViewById(R.id.phoneEt);\
-\
-        Button nSaveBtn = findViewById(R.id.saveBtn);\
-\
-        nSaveBtn.setOnClickListener(new View.OnClickListener() \{\
-            @Override\
-            public void onClick(View view) \{\
-                String name= mNameEt.getText().toString();\
-                String email= mEmailEt.getText().toString();\
-                String phone= mPhoneEt.getText().toString();\
-\
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);\
-                intent.putExtra( "NAME", name);\
-                intent.putExtra( "EMAIL", email);\
-                intent.putExtra( "PHONE", phone);\
-                startActivity(intent);\
-\
-            \}\
-        \});\
-\
-    \}\
-\}\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+public class MainActivity extends AppCompatActivity {
 
-\f0\b\fs28 \cf0 MainActivity2.java\
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-\f1\b0\fs24 import androidx.appcompat.app.ActionBar;\
-import androidx.appcompat.app.AppCompatActivity;\
-\
-import android.content.Intent;\
-import android.os.Bundle;\
-import android.widget.TextView;\
-\
-public class MainActivity2 extends AppCompatActivity \{\
-\
-    @Override\
-    protected void onCreate(Bundle savedInstanceState) \{\
-        super.onCreate(savedInstanceState);\
-        setContentView(R.layout.activity_main2);\
-\
-        ActionBar actionBar = getSupportActionBar();\
-        actionBar.setTitle("Second Activity");\
-\
-        Intent intent = getIntent();\
-        String name = intent.getStringExtra("NAME");\
-        String email = intent.getStringExtra("EMAIL");\
-        String phone = intent.getStringExtra("PHONE");\
-\
-        TextView mResultTv = findViewById(R.id.resultTv);\
-        mResultTv.setText("Name: "+name+"\\nEmail: "+email+"\\nPhone: "+phone);\
-\
-\
-    \}\
-\}\
-\
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("First Activity");
 
-\f0\b\fs28 XML1
-\f1\b0\fs24 \
-<?xml version="1.0" encoding="utf-8"?>\
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"\
-    xmlns:app="http://schemas.android.com/apk/res-auto"\
-    xmlns:tools="http://schemas.android.com/tools"\
-    android:layout_width="match_parent"\
-    android:layout_height="match_parent"\
-    tools:context=".MainActivity"\
-    android:orientation="vertical"\
-    android:padding="10dp"\
-    android:gravity="center">\
-\
-    <EditText\
-        android:id="@+id/nameEt"\
-        android:hint="Enter Name"\
-        android:inputType="text"\
-        android:layout_width="match_parent"\
-        android:layout_height="wrap_content"\
-        />\
-    <EditText\
-        android:id="@+id/emailEt"\
-        android:hint="Enter Email"\
-        android:inputType="textEmailAddress"\
-        android:layout_width="match_parent"\
-        android:layout_height="wrap_content"\
-        />\
-    <EditText\
-        android:id="@+id/phoneEt"\
-        android:hint="Enter Phone"\
-        android:inputType="phone"\
-        android:layout_width="match_parent"\
-        android:layout_height="wrap_content"\
-        />\
-    <Button\
-        android:id="@+id/saveBtn"\
-        android:text="Save"\
-        android:layout_width="wrap_content"\
-        android:layout_height="wrap_content"/>\
-</LinearLayout>\
-\
+        EditText mNameEt =  findViewById(R.id.nameEt);
+        EditText mEmailEt = findViewById(R.id.emailEt);
+        EditText mPhoneEt = findViewById(R.id.phoneEt);
 
-\f0\b\fs28 XML2
-\f1\b0\fs24 \
-<?xml version="1.0" encoding="utf-8"?>\
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"\
-    xmlns:app="http://schemas.android.com/apk/res-auto"\
-    xmlns:tools="http://schemas.android.com/tools"\
-    android:layout_width="match_parent"\
-    android:layout_height="match_parent"\
-    tools:context=".MainActivity2"\
-    android:orientation="vertical"\
-    android:padding="10dp"\
-    android:gravity="center">\
-  <TextView\
-      android:id="@+id/resultTv"\
-      android:textSize="30sp"\
-      android:textStyle="bold"\
-      android:layout_width="match_parent"\
-      android:layout_height="wrap_content" />\
-\
-</LinearLayout>}
+        Button nSaveBtn = findViewById(R.id.saveBtn);
+
+        nSaveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name= mNameEt.getText().toString();
+                String email= mEmailEt.getText().toString();
+                String phone= mPhoneEt.getText().toString();
+
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                intent.putExtra( "NAME", name);
+                intent.putExtra( "EMAIL", email);
+                intent.putExtra( "PHONE", phone);
+                startActivity(intent);
+
+            }
+        });
+
+    }
+}
+MainActivity2.java
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class MainActivity2 extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Second Activity");
+
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("NAME");
+        String email = intent.getStringExtra("EMAIL");
+        String phone = intent.getStringExtra("PHONE");
+
+        TextView mResultTv = findViewById(R.id.resultTv);
+        mResultTv.setText("Name: "+name+"\nEmail: "+email+"\nPhone: "+phone);
+
+
+    }
+}
+
+XML1
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/nameEt"
+        android:hint="Enter Name"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:id="@+id/emailEt"
+        android:hint="Enter Email"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:id="@+id/phoneEt"
+        android:hint="Enter Phone"
+        android:inputType="phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <Button
+        android:id="@+id/saveBtn"
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
+
+XML2
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity2"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="center">
+  <TextView
+      android:id="@+id/resultTv"
+      android:textSize="30sp"
+      android:textStyle="bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+
+</LinearLayout>
