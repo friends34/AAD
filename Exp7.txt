@@ -1,5 +1,5 @@
 main.xml
-
+---------------------------------
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -43,8 +43,7 @@ main.xml
 </LinearLayout>
 
 Main.java
-
-package com.example.exp7;
+------------------------------------
 
 import android.os.Build;
 import android.os.Bundle;
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 }
 
 First.xml
-
+---------------------------------------
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -122,8 +121,7 @@ First.xml
 </android.support.constraint.ConstraintLayout>
 
 first.java
-
-package com.example.exp7;
+----------------------------------------------
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -158,7 +156,7 @@ public class FirstFragment extends Fragment {
 }
 
 second.xml
-
+---------------------------------------
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -182,8 +180,7 @@ second.xml
 </android.support.constraint.ConstraintLayout>
 
 second.java
-
-package com.example.exp7;
+-----------------------------------------
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
