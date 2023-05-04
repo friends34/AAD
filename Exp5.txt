@@ -1,5 +1,6 @@
 MainActivity.java
-mport androidx.appcompat.app.ActionBar;
+------------------------------------------
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 MainActivity2.java
+----------------------------------------------------
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -75,6 +78,7 @@ public class MainActivity2 extends AppCompatActivity {
 }
 
 XML1
+--------------------------------------------------
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -115,6 +119,7 @@ XML1
 </LinearLayout>
 
 XML2
+-----------------------------------------------------
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
