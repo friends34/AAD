@@ -1,119 +1,101 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2709
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Bold;
+Main_Activity.java
+
+import android.app.*;
+import android.os.*;
+import android.text.method.ScrollingMovementMethod;
+import android.view.*;
+import android.widget.*;
+
+public class MainActivity extends Activity {
+    private Button b;
+    EditText etname;
+    TextView tv;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {   
+        super.onCreate(savedInstanceState);            
+        setContentView(R.layout.activity_main);        
+        b=(Button)findViewById(R.id.click);
+        tv=(TextView)findViewById(R.id.display);
+        tv.setMovementMethod(new ScrollingMovementMethod());
+        b.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                etname=(EditText)findViewById(R.id.name);
+                tv.setText(etname.getText().toString());
+            }
+        });
+    }
 }
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red72\green139\blue206;
-\red0\green0\blue0;\red72\green140\blue207;}
-{\*\expandedcolortbl;;\cssrgb\c0\c1\c1;\cssrgb\c100000\c100000\c100000\c0;\cssrgb\c34356\c61927\c84545;
-\cssrgb\c0\c1\c1;\cssrgb\c34566\c62178\c84753;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww29200\viewh18400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f0\b\fs34 \cf0 Main_Activity.java\
-\
-\pard\pardeftab720\partightenfactor0
+XML
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#F6EBC9"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingStart="10dp"
+    android:paddingTop="100dp"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbars="vertical"
+    android:showDividers="none">
 
-\f1\b0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec4 import android.app.*;\
-import android.os.*;\
-import android.text.method.ScrollingMovementMethod;\
-import android.view.*;\
-import android.widget.*;\
-\
-public class MainActivity extends Activity \{\
-    private Button b;\
-    EditText etname;\
-    TextView tv;\
-\
-    @Override\
-    protected void onCreate(Bundle savedInstanceState) \{   \
-        super.onCreate(savedInstanceState);            \
-        setContentView(R.layout.activity_main);        \
-        b=(Button)findViewById(R.id.click);\
-        tv=(TextView)findViewById(R.id.display);\
-        tv.setMovementMethod(new ScrollingMovementMethod());\
-        b.setOnClickListener(new View.OnClickListener() \{\
-\
-            @Override\
-            public void onClick(View v) \{\
-                // TODO Auto-generated method stub\
-                etname=(EditText)findViewById(R.id.name);\
-                tv.setText(etname.getText().toString());\
-            \}\
-        \});\
-    \}\
-\}\
-\
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="Enter Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#00BCD4"
+        android:textStyle="bold" />
 
-\f2\b\fs36 XML
-\fs38 \
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#34064A"
+        android:ems="10"
+        android:hint="Your Name"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#681A07">
 
-\f1\b0\fs24 \
-\cf5 \strokec6 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"\
-    xmlns:app="http://schemas.android.com/apk/res-auto"\
-    android:layout_width="fill_parent"\
-    android:layout_height="fill_parent"\
-    android:background="#F6EBC9"\
-    android:gravity="center_horizontal"\
-    android:orientation="vertical"\
-    android:paddingStart="10dp"\
-    android:paddingTop="100dp"\
-    android:scrollbarAlwaysDrawVerticalTrack="true"\
-    android:scrollbars="vertical"\
-    android:showDividers="none">\
-\
-    <TextView\
-        android:id="@+id/title"\
-        android:layout_width="wrap_content"\
-        android:layout_height="wrap_content"\
-        android:layout_marginTop="30dp"\
-        android:layout_marginBottom="20dp"\
-        android:text="Enter Text"\
-        android:textAppearance="?android:attr/textAppearanceLarge"\
-        android:textColor="#00BCD4"\
-        android:textStyle="bold" />\
-\
-    <EditText\
-        android:id="@+id/name"\
-        android:layout_width="300dp"\
-        android:layout_height="50dp"\
-        android:backgroundTint="#34064A"\
-        android:ems="10"\
-        android:hint="Your Name"\
-        android:inputType="textPersonName"\
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"\
-        android:textColor="#681A07">\
-\
-        <requestFocus />\
-    </EditText>\
-\
-    <Button\
-        android:id="@+id/click"\
-        android:layout_width="100dp"\
-        android:layout_height="50dp"\
-        android:layout_marginTop="10dp"\
-        android:background="#9C6060"\
-        android:backgroundTint="#9A7F8B"\
-        android:text="Button"\
-        android:textAlignment="center"\
-        android:textColor="#F3EAEA"\
-        android:textColorHighlight="#551C1C"\
-        android:textSize="14sp"\
-        android:textStyle="normal"\
-        app:iconTint="#C65134"\
-        app:iconTintMode="multiply" />\
-\
-    <TextView\
-        android:id="@+id/display"\
-        android:layout_width="350dp"\
-        android:layout_height="400dp"\
-        android:background="#F6EAAB"\
-        android:gravity="center"\
-        android:padding="100dp"\
-        android:rotationX="0"\
-        android:scrollbars="vertical"\
-        android:textAppearance="?android:attr/textAppearanceLarge"\
-        android:textColor="#CA651A"\
-        android:textSize="20sp"\
-        android:textStyle="italic" />\
-</LinearLayout>\
-}
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/click"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="#9C6060"
+        android:backgroundTint="#9A7F8B"
+        android:text="Button"
+        android:textAlignment="center"
+        android:textColor="#F3EAEA"
+        android:textColorHighlight="#551C1C"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:iconTint="#C65134"
+        app:iconTintMode="multiply" />
+
+    <TextView
+        android:id="@+id/display"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        android:background="#F6EAAB"
+        android:gravity="center"
+        android:padding="100dp"
+        android:rotationX="0"
+        android:scrollbars="vertical"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#CA651A"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+</LinearLayout>
