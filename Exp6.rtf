@@ -1,0 +1,78 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 HelveticaNeue;
+}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red204\green175\blue175;\red0\green0\blue0;
+\red0\green0\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c83922\c74118\c74118\c30196;\cssrgb\c0\c0\c0;
+\cssrgb\c0\c0\c100000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww29200\viewh18400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs30 \cf0 MainActivity.java
+\f1\b0\fs24 \
+import androidx.appcompat.app.AppCompatActivity;\
+\
+import android.content.Intent;\
+import android.net.Uri;\
+import android.os.Bundle;\
+import android.view.View;\
+import android.widget.Button;\
+\
+import java.util.Scanner;\
+\
+public class MainActivity extends AppCompatActivity \{\
+    Button sendsms;\
+    @Override\
+    protected void onCreate(Bundle savedInstanceState) \{\
+        super.onCreate(savedInstanceState);\
+        setContentView(R.layout.activity_main);\
+        sendsms = findViewById(R.id.button);\
+        sendsms.setOnClickListener(new View.OnClickListener() \{\
+            @Override\
+            public void onClick(View view) \{\
+                Intent it = new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms","0123456789",null));\
+                it.putExtra("Message","Hello..!, How are you ?");\
+                startActivity(it);\
+\
+            \}\
+        \});\
+    \}\
+\}\
+\
+
+\f0\b\fs30 XML
+\f1\b0\fs24 \
+<?xml version="1.0" encoding="utf-8"?>\
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"\
+    xmlns:app="http://schemas.android.com/apk/res-auto"\
+    xmlns:tools="http://schemas.android.com/tools"\
+    android:layout_width="match_parent"\
+    android:layout_height="match_parent"\
+    android:layout_gravity="center"\
+    android:gravity="center"\
+    tools:context=".MainActivity">\
+\
+    <Button\
+        android:id="@+id/button"\
+        android:layout_width="wrap_content"\
+        android:layout_height="wrap_content"\
+        android:layout_gravity="center"\
+        android:text="Send SMS" />\
+</LinearLayout>\
+\
+
+\f0\b\fs28 Android Manifest.xml
+\f1\b0\fs24 \
+\
+Add flg:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\qj\partightenfactor0
+\ls1\ilvl0
+\f2\fs32 \cf2 \cb3 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \'a0<uses-permission\'a0android:name=\cf5 \strokec5 "android.permission.SEND_SMS"\cf2 \strokec4 />\'a0\'a0\cf0 \cb1 \
+\ls1\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \'a0\'a0\'a0\'a0\cf0 \cb1 \
+\ls1\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 \'a0\'a0\'a0\'a0<uses-permission\'a0android:name=\cf5 \strokec5 "android.permission.RECEIVE_SMS"\cf2 \strokec4 />\'a0\'a0\cf0 \cb1 \
+}
